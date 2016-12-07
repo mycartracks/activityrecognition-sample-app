@@ -38,6 +38,23 @@ android {
 	        }
 	    }
     }
+    signingConfigs {    	
+	    release {
+	        storeFile file("my-release-key.keystore")
+	        storePassword System.console().readLine("\nKeystore password: ")
+	        keyAlias System.console().readLine("\nKey alias: ")
+	        keyPassword System.console().readLine("\nKey password: ")
+	    }
+	}
+    buildTypes {
+    	debug {    		
+    	}
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release            
+        }
+    }
 }
 
 dependencies {
@@ -49,3 +66,5 @@ dependencies {
     releaseCompile project(path: ':library', configuration: 'release')
     debugCompile project(path: ':library', configuration: 'debug')
 }
+
+
