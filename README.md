@@ -1,0 +1,1 @@
+# activityrecognition-sample-app
