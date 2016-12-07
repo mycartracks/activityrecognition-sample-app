@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+    	  }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+	    main {
+	    	jniLibs.srcDirs = ['libs']
+	        manifest {
+	            srcFile "AndroidManifest.xml"
+	        }
+	        java {
+	            srcDir "src"
+	        }
+	        res {
+	            srcDir "res"
+	        }
+	        assets {
+	            srcDir "assets"
+	        }
+	        resources {
+	            srcDir "src"
+	        }
+	    }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+
+    // gradle needs to know what you want to do with default buildtype 'release' and 'debug'
+    releaseCompile project(path: ':library', configuration: 'release')
+    debugCompile project(path: ':library', configuration: 'debug')
+}
