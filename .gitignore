@@ -1,7 +1,7 @@
 #android.gitignore
 target
 # built application files
-*.apk
+# *.apk
 *.ap_
 
 # files for the dex VM
@@ -15,6 +15,7 @@ bin/
 gen/
 .apt_generated/
 project.properties
+my-release-key.keystore
 
 # Local configuration file (sdk path, etc)
 local.properties
